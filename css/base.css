@@ -13,6 +13,22 @@
     --radius: 10px;
     --header-h: 56px;
 }
+.icon-rails {
+    --icon: url("/img/rails.svg");
+}
+.icon-js {
+    --icon: url("/img/javascript.svg");
+}
+.icon-css {
+    --icon: url("/img/css.svg");
+}
+.icon-devops {
+    --icon: url("/img/aws.svg");
+}
+.icon-java {
+    --icon: url("/img/java.svg");
+}
+
 html,
 body {
     margin: 0;
@@ -520,4 +536,119 @@ ul.grid-gap > li.card .read-more:hover {
     .thumbs--3 {
         grid-template-columns: 1fr;
     }
+}
+
+.skills {
+    list-style: none;
+    display: grid;
+    gap: var(--gap);
+    grid-template-columns: minmax(0, 1fr);
+    margin-top: 1rem;
+}
+
+@media (max-width: 800px) {
+    .skills {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+.skill details {
+    background: hsl(var(--surface));
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
+    padding: 0.75rem;
+    overflow: clip;
+}
+
+.skill summary {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 0.5rem;
+    list-style: none;
+    cursor: pointer;
+    user-select: none;
+}
+.skill summary::-webkit-details-marker {
+    display: none;
+}
+
+.skill summary span {
+    font-weight: 700;
+    letter-spacing: 0.01em;
+}
+.skill summary small {
+    color: hsl(var(--accent));
+    font-weight: 600;
+    opacity: 0.95;
+}
+
+.skill .skill-body {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.25s ease;
+}
+.skill details[open] .skill-body {
+    grid-template-rows: 1fr;
+}
+.skill .skill-body > * {
+    min-height: 0;
+}
+.skill .skill-body p {
+    margin: 0.6rem 0 0.8rem 0;
+    color: hsl(var(--fg) / 0.9);
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.tags li {
+    padding: 0.25rem 0.55rem;
+    border: 1px solid hsl(var(--border));
+    border-radius: 999px;
+    background: hsl(var(--surface));
+    color: hsl(var(--fg) / 0.9);
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+.skill details:hover {
+    border-color: hsl(var(--accent) / 0.4);
+}
+.skill summary {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.skill-icon {
+    width: 22px;
+    height: 22px;
+    background-color: hsl(var(--accent));
+    /* Safari + Chromium masks */
+    -webkit-mask: var(--icon) no-repeat center / contain;
+    mask: var(--icon) no-repeat center / contain;
+    flex-shrink: 0;
+    border-radius: 4px;
+    transition:
+        filter 0.2s ease,
+        transform 0.15s ease;
+}
+
+.skill details:hover .skill-icon {
+    filter: brightness(1.15);
+    transform: translateY(-1px);
+}
+
+.skill summary::-webkit-details-marker {
+    display: none;
+}
+.skill summary::marker {
+    content: none;
 }

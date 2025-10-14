@@ -78,6 +78,169 @@ h2 {
 h4 {
     text-align: center;
 }
+
+.section {
+    padding: clamp(4rem, 12vh, 7rem) 0;
+}
+
+.hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - var(--header-h));
+    padding: clamp(4rem, 14vh, 7.5rem) 0;
+    overflow: hidden;
+    isolation: isolate;
+    background: linear-gradient(180deg, hsl(var(--bg)), hsl(226 40% 10%));
+}
+
+.hero-backdrop {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.hero-checker {
+    position: absolute;
+    inset: -30%;
+    background-size: 42px 42px;
+    background-image:
+        linear-gradient(45deg, hsl(var(--fg) / 0.08) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, hsl(var(--fg) / 0.08) 75%),
+        linear-gradient(45deg, hsl(var(--fg) / 0.05) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, hsl(var(--fg) / 0.05) 75%);
+    background-position: 0 0, 0 0, 21px 21px, 21px 21px;
+    opacity: 0.35;
+    transform: rotate(2deg);
+    animation: heroCheckerDrift 32s linear infinite;
+}
+
+.hero-glow {
+    position: absolute;
+    inset: -10%;
+    background: radial-gradient(circle at 50% 35%, hsl(var(--accent) / 0.28), transparent 60%);
+    mix-blend-mode: screen;
+    opacity: 0.6;
+    animation: heroGlowPulse 18s ease-in-out infinite;
+}
+
+.hero-laser {
+    position: absolute;
+    top: 14%;
+    left: -40%;
+    width: 180%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, hsl(var(--accent)), transparent);
+    box-shadow: 0 0 12px hsl(var(--accent) / 0.8);
+    transform: rotate(8deg);
+    mix-blend-mode: screen;
+    opacity: 0;
+    animation: heroLaserSweep 12s linear infinite;
+}
+
+.hero-laser::after {
+    content: "";
+    position: absolute;
+    inset: -8px 0;
+    background: linear-gradient(90deg, transparent, hsl(var(--accent) / 0.35), transparent);
+    filter: blur(6px);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    width: min(100% - 3rem, 54rem);
+    margin-inline: auto;
+    display: grid;
+    gap: clamp(1rem, 3vw, 1.6rem);
+    text-align: center;
+}
+
+.hero .eyebrow {
+    justify-self: center;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: hsl(var(--fg) / 0.6);
+    font-weight: 700;
+    font-size: 0.92rem;
+}
+
+.hero-name {
+    margin: 0;
+    font-size: clamp(3.2rem, 8vw, 4.6rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: hsl(var(--fg));
+    background: linear-gradient(100deg, hsl(var(--fg)), hsl(var(--accent) / 0.65));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero p {
+    margin: 0;
+    font-size: clamp(1.05rem, 2.4vw, 1.4rem);
+    color: hsl(var(--fg) / 0.88);
+}
+
+.hero .hero-lede {
+    font-size: clamp(1.12rem, 2.6vw, 1.5rem);
+    color: hsl(var(--fg));
+}
+
+@keyframes heroCheckerDrift {
+    0% {
+        transform: rotate(2deg) translate3d(0, 0, 0);
+    }
+
+    50% {
+        transform: rotate(2deg) translate3d(-3%, -4%, 0);
+    }
+
+    100% {
+        transform: rotate(2deg) translate3d(0, 0, 0);
+    }
+}
+
+@keyframes heroGlowPulse {
+    0%,
+    100% {
+        opacity: 0.55;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.75;
+        transform: scale(1.06);
+    }
+}
+
+@keyframes heroLaserSweep {
+    0% {
+        opacity: 0;
+        transform: translateX(-30%) rotate(8deg);
+    }
+
+    10% {
+        opacity: 0.8;
+    }
+
+    50% {
+        opacity: 0.9;
+        transform: translateX(15%) rotate(8deg);
+    }
+
+    90% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(50%) rotate(8deg);
+    }
+}
 /* nav */
 .site-header {
     position: sticky;

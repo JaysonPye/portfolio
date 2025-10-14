@@ -428,3 +428,22 @@ ul.grid-gap > li.card .read-more:hover {
     transform: translateY(0);
     box-shadow: 0 2px 4px hsl(var(--accent) / 0.2);
 }
+.brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.brand-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    transition:
+        transform 0.2s ease,
+        filter 0.2s ease;
+}
+
+.brand-icon:hover {
+    transform: scale(1.1) rotate(3deg);
+    filter: brightness(1.2);
+}

@@ -227,7 +227,18 @@ body {
     font-size: clamp(1.12rem, 2.6vw, 1.5rem);
     color: hsl(var(--fg));
 }
-
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: linear-gradient(
+        to bottom,
+        transparent 70%,
+        hsl(var(--bg)) 100%
+    );
+    pointer-events: none;
+}
 @keyframes heroCheckerDrift {
     0% {
         transform: rotate(2deg) translate3d(0, 0, 0);

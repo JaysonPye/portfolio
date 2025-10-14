@@ -1,55 +1,41 @@
 ---
 layout: _base.html
-title: Pyegramming
-pagination:
-    data: collections.posts
-    size: 10
-    alias: posts
+title: "Jayson Pye — Portfolio"
 eleventyExcludeFromCollections: true
-eleventyComputed:
-    permalink: "{% if pagination.pageNumber == 0 %}/{% else %}/page/{{ pagination.pageNumber | plus: 1 }}/{% endif %}"
 ---
 
-<h1>{{ title }}</h1>
-<h4>
-    Projects I’ve built, developer notes, and a Japanese diary — with the
-    occasional personal post mixed in.
-</h4>
+<section id="about" class="section">
+    <h1>Rails + IT Freelancer</h1>
+    <p>I build small, fast, reliable tools for real users.</p>
+    <p><a class="link-btn" href="mailto:hi@jaysonpye.dev">Contact</a></p>
+</section>
 
-<ul class="grid-gap" style="list-style: none; padding: 0; margin: 0">
-    {% for post in posts %}
-    <li class="card">
-        <h3><a href="{{ post.url | url }}">{{ post.data.title }}</a></h3>
-        <small>{{ post.date | date: "%B %d, %Y" }}</small>
-        <div class="content">{{ post.templateContent | truncate: 220 }}</div>
-        <a class="read-more" href="{{ post.url | url }}">Continue reading →</a>
-    </li>
-    {% endfor %}
-</ul>
+<section id="skills" class="section">
+    <h2>Skills</h2>
+    <ul class="tags">
+        <li>Ruby on Rails</li>
+        <li>Postgres</li>
+        <li>Hotwire / Stimulus</li>
+        <li>Linux</li>
+        <li>AWS (S3 / CloudFront)</li>
+        <li>Eleventy</li>
+    </ul>
+</section>
 
-<nav
-    class="pagination"
-    style="
-        display: flex;
-        justify-content: space-between;
-        gap: var(--space);
-        margin-top: var(--space);
-    "
->
-    {% if pagination.href.previous %}
-    <a class="button link-btn" href="{{ pagination.href.previous | url }}"
-        >← Newer</a
-    >
-    {% else %}
-    <span></span>
-    {% endif %} {% if pagination.href.next %}
-    <a class="button link-btn" href="{{ pagination.href.next | url }}"
-        >Older →</a
-    >
-    {% endif %}
-</nav>
-<nav class="tag-container" style="margin: var(--space) 0">
-    {% for t in collections.tagsList %}
-    <a href="{{ '/tags/' | url }}{{ t | slugify }}">#{{ t }}</a>
-    {% endfor %}
-</nav>
+<section id="projects" class="section">
+    <h2>Projects</h2>
+    <ul class="grid-gap" style="list-style: none; padding: 0; margin: 0">
+        <li class="card">
+            <h3><a href="https://example.com/kidsup">KidsUP Ops Tools</a></h3>
+            <small>Rails, Postgres, Hotwire</small>
+            <div class="content">
+                Attendance sheets, photo service, invoices — built for speed and
+                staff sanity.
+            </div>
+            <div class="links">
+                <a href="https://github.com/jaysonpye/kidsup-tools">Repo</a> ·
+                <a href="https://example.com/kidsup">Live</a>
+            </div>
+        </li>
+    </ul>
+</section>

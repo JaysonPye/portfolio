@@ -3,23 +3,44 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>{{ Pyegramming }}</title>
-        <link rel="stylesheet" href="/css/base.css" />
+
+        <title>{{ "Jayson Pye" }}</title>
+        <meta
+            name="description"
+            content="{{ description | default: 'Rails + IT freelancer. Projects, skills, and contact.' }}"
+        />
+
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="stylesheet" href="/css/base.css" />
         <link rel="stylesheet" href="/css/site.css" />
     </head>
     <body>
         <header class="site-header">
             <nav>
-                <a class="brand link-btn" href="/">Pyegramming</a>
+                <a class="brand link-btn" href="#about">Jayson Pye</a>
                 <div class="spacer"></div>
-                <a class="link-btn" href="/tags/dev/">Dev Notes</a>
-                <a class="link-btn" href="/tags/books/">Books</a>
-                <a class="link-btn" href="/tags/japanese">Japanese</a>
-                <a class="link-btn" href="/daily-log/">Daily-log</a>
+                <a class="link-btn" href="#about">About</a>
+                <a class="link-btn" href="#skills">Skills</a>
+                <a class="link-btn" href="#projects">Projects</a>
+                <a class="link-btn" href="https://pyegramming.jaysonpye.dev"
+                    >Blog</a
+                >
             </nav>
         </header>
 
         <main class="container">{{ content }}</main>
+
+        <script>
+            document.querySelectorAll('a[href^="#"]').forEach((a) => {
+                a.addEventListener("click", (e) => {
+                    const id = a.getAttribute("href").slice(1);
+                    const el = document.getElementById(id);
+                    if (!el) return;
+                    e.preventDefault();
+                    el.scrollIntoView({ behavior: "smooth", block: "start" });
+                    history.replaceState(null, "", `#${id}`);
+                });
+            });
+        </script>
     </body>
 </html>

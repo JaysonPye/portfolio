@@ -88,11 +88,13 @@ h4 {
     display: flex;
     align-items: center;
     justify-content: center;
+
     min-height: calc(100vh - var(--header-h));
     padding: clamp(4rem, 14vh, 7.5rem) 0;
     overflow: hidden;
     isolation: isolate;
     background: linear-gradient(180deg, hsl(var(--bg)), hsl(226 40% 10%));
+
 }
 
 .hero-backdrop {
@@ -249,6 +251,7 @@ h4 {
     border-bottom: 1px solid hsl(var(--border));
     background: hsl(var(--bg) / 0.7);
     backdrop-filter: blur(6px);
+    z-index: 10;
 }
 .site-header nav {
     height: 100%;

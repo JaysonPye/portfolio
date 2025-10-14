@@ -4,7 +4,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("css");
   eleventyConfig.addPassthroughCopy("scripts");
   eleventyConfig.addPassthroughCopy("favicon.svg");
-
+  eleventyConfig.addPassthroughCopy("jaysonpye_resume.pdf");
   eleventyConfig.addWatchTarget("css");
   eleventyConfig.addWatchTarget("scripts");
 

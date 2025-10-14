@@ -445,7 +445,12 @@ ul.grid-gap > li.card .read-more:hover {
         transform 0.2s ease,
         filter 0.2s ease;
 }
-
+.brand {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-shrink: 0;
+}
 @media (max-width: 640px) {
     .brand-icon {
         width: 22px;

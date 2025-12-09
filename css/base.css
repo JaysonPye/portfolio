@@ -96,7 +96,7 @@ h4 {
 }
 
 .section {
-    padding: clamp(4rem, 5vh, 7rem) 0;
+    padding: clamp(4rem, 5vh, 4rem) 0;
 }
 .section.hero {
     position: relative;

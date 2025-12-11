@@ -16,7 +16,7 @@
     </head>
     <body>
         <header class="site-header">
-            <nav>
+            <nav class="site-nav">
                 <a href="/" class="brand">
                     <img
                         src="/favicon.svg"
@@ -27,13 +27,26 @@
                         decoding="async"
                     />
                 </a>
-                <div class="spacer"></div>
-                <a class="link-btn" href="#about">About</a>
-                <a class="link-btn" href="#skills">Skills</a>
-                <a class="link-btn" href="#projects">Projects</a>
-                <a class="link-btn" href="https://pyegramming.jaysonpye.dev"
-                    >Blog</a
+
+                <button
+                    class="nav-toggle"
+                    type="button"
+                    aria-label="Toggle navigation"
+                    aria-expanded="false"
                 >
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                </button>
+
+                <div class="nav-links">
+                    <a class="link-btn" href="#about">About</a>
+                    <a class="link-btn" href="#skills">Skills</a>
+                    <a class="link-btn" href="#projects">Projects</a>
+                    <a class="link-btn" href="https://pyegramming.jaysonpye.dev"
+                        >Blog</a
+                    >
+                </div>
             </nav>
         </header>
 

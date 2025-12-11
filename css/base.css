@@ -318,7 +318,8 @@ body {
     }
 }
 
-/* nav */
+/* nav – synced with project 1 */
+
 .site-header {
     position: sticky;
     top: 0;
@@ -326,22 +327,36 @@ body {
     border-bottom: 1px solid hsl(var(--border));
     background: hsl(var(--bg) / 0.7);
     backdrop-filter: blur(6px);
-    z-index: 10;
+    z-index: 1000;
+    isolation: isolate;
 }
+
 .site-header nav {
     height: 100%;
     display: flex;
     align-items: center;
     gap: var(--gap);
     padding-inline: var(--space);
+    position: relative;
 }
+
 .site-header .brand {
     font-weight: 700;
     color: hsl(var(--fg));
 }
+
 .site-header .spacer {
     flex: 1;
 }
+
+/* desktop nav links */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: var(--gap);
+    margin-left: auto;
+}
+
 .link-btn {
     color: hsl(var(--fg));
     padding: 0.35rem 0.6rem;
@@ -351,13 +366,144 @@ body {
     background: hsl(var(--accent) / 0.5);
     color: white;
 }
+
+/* hamburger */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: transparent;
+    border: 1px solid hsl(var(--border));
+    border-radius: 8px;
+    padding: 8px;
+    cursor: pointer;
+    color: hsl(var(--fg));
+    margin-left: auto;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: currentColor;
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
+}
+
+/* hamburger -> X animation when nav-open is on body/html */
+.nav-open .menu-toggle span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.nav-open .menu-toggle span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-open .menu-toggle span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* full-screen overlay */
+.menu-overlay {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: hsl(var(--bg) / 0.75);
+    backdrop-filter: blur(4px);
+    transition: opacity 0.2s ease;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 998;
+}
+
+.nav-open .menu-overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* prevent background scroll when menu is open */
+.nav-open {
+    overflow: hidden;
+}
+
+/* small tweaks for narrow screens */
 @media (max-width: 640px) {
     .site-header nav {
-        flex-wrap: wrap;
-        row-gap: 0.5rem;
+        flex-wrap: nowrap;
     }
     .site-header .spacer {
         display: none;
+    }
+}
+
+/* mobile menu layout */
+@media (max-width: 720px) {
+    .menu-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .site-header nav {
+        gap: var(--space);
+    }
+
+    .menu-overlay {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: hsl(var(--bg) / 0.75);
+        backdrop-filter: blur(4px);
+        transition: opacity 0.2s ease;
+        opacity: 0;
+        pointer-events: none;
+        z-index: 998;
+    }
+
+    .mobile-menu {
+        background: hsl(var(--surface));
+        border: 1px solid hsl(var(--border));
+        border-radius: calc(var(--radius) + 4px);
+        padding: calc(var(--space) * 1.25);
+        pointer-events: auto;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space);
+        text-align: center;
+        transform: scale(0.96);
+        opacity: 0;
+        transition:
+            opacity 0.2s ease,
+            transform 0.2s ease;
+    }
+
+    .nav-open .mobile-menu {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    .menu-close {
+        display: none;
+    }
+
+    .mobile-nav-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space);
+    }
+
+    .mobile-nav-links a {
+        width: 100%;
     }
 }
 
@@ -539,7 +685,9 @@ ul.grid-gap > li.card .read-more:hover {
         grid-template-columns: 1fr;
     }
 }
-
+ul.skills {
+    padding: 0;
+}
 .skills {
     list-style: none;
     display: grid;
